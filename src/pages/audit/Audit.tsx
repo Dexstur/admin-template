@@ -9,14 +9,14 @@ import { CustomPagination } from "../../components";
 export const AuditPage: FC<RouteProps> = () => {
   const location = useLocation();
   const navigate = useNavigate();
-  const queryParams = new URLSearchParams(location.search);
+
   const [entries, setEntries] = useState<AuditEntry[]>([]);
   const [error, setError] = useState("");
   const [page, setPage] = useState(1);
 
-  const pageQuery = queryParams.get("page");
-
   useEffect(() => {
+    const queryParams = new URLSearchParams(location.search);
+    const pageQuery = queryParams.get("page");
     if (pageQuery) {
       const currentPage = parseInt(pageQuery);
 
@@ -24,13 +24,15 @@ export const AuditPage: FC<RouteProps> = () => {
         setEntries([]);
         setPage(currentPage);
       }
+    } else {
+      setPage(1);
+      navigate("/audit");
     }
-  }, [pageQuery]);
+  }, [location]);
   useEffect(() => {
     axios
       .get("https://api.mockaroo.com/api/cbf7e900?count=10&key=a48cf320")
       .then((res) => {
-        console.log(res.data);
         const data = res.data as AuditEntry[];
         const orderedData = data.sort(
           (a, b) => Date.parse(b.timestamp) - Date.parse(a.timestamp)

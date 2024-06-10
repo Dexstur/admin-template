@@ -1,10 +1,10 @@
 import { transactions } from "./transaction";
 import { Table } from "react-bootstrap";
-import { TransactionType } from "./transaction";
+import { TransactionType, Status } from "./transaction";
 
 export function TransactionTable() {
   return (
-    <div>
+    <div className="table-responsive">
       <Table className="table table-striped">
         <thead>
           <tr>
@@ -46,7 +46,17 @@ export function TransactionTable() {
               <td>{transaction.vat}</td>
               <td>{transaction.date}</td>
               <td>
+                <span
+                  className={`${
+                    transaction.status === Status.SUCCESSFUL
+                      ? "bg-success"
+                      : transaction.status === Status.PENDING
+                      ? "bg-warning"
+                      : "bg-danger"
+                  } text-bold`}
+                >
                   {transaction.status}
+                </span>
               </td>
               <td>{transaction.description}</td>
               <td>{transaction.remark}</td>

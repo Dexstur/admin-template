@@ -23,9 +23,9 @@ export const AuditTable: FC<Props> = ({ entries }) => {
           </tr>
         </thead>
         <tbody>
-          {entries.map((entry) => (
+          {entries.map((entry, index) => (
             <tr key={entry.id}>
-              <th scope="row">{entry.id}</th>
+              <th scope="row">{index + 1}</th>
               <td>{entry.userName}</td>
               <td>{entry.actionType}</td>
               <td>

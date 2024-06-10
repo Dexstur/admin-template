@@ -21,6 +21,7 @@ export const AuditPage: FC<RouteProps> = () => {
       const currentPage = parseInt(pageQuery);
 
       if (currentPage > 0) {
+        setEntries([]);
         setPage(currentPage);
       }
     }

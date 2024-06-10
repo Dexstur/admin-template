@@ -1,0 +1,34 @@
+export interface AuditEntry {
+  id: string;
+  userId: string;
+  userName: string;
+  actionType: ActionType;
+  targetAccount: string;
+  actionId: string;
+  actionStatus: ActionStatus;
+  timestamp: string;
+}
+
+export enum ActionType {
+  LOGIN = "LOGIN",
+  LOGOUT = "LOGOUT",
+  CREATE_ACCOUNT = "CREATE_ACCOUNT",
+  UPDATE_ACCOUNT = "UPDATE_ACCOUNT",
+  BALANCE_INQUIRY = "BALANCE_INQUIRY",
+  DISABLE_MERCHANT = "DISABLE_MERCHANT",
+  ACTIVATE_MERCHANT = "ACTIVATE_MERCHANT",
+  INCOMING_TRANSFER = "INCOMING_TRANSFER",
+  OUTGOING_TRANSFER = "OUTGOING_TRANSFER",
+  SERVICE_CHARGE = "SERVICE_CHARGE",
+  VAT = "VAT",
+}
+
+export enum ActionStatus {
+  SUCCESS = "SUCCESS",
+  INVALID_PIN = "INVALID_PIN",
+  INVALID_TOKEN = "INVALID_TOKEN",
+  SESSION_EXPIRED = "SESSION_EXPIRED",
+  UNAUTHORIZED = "UNAUTHORIZED",
+  INSUFFICIENT_FUNDS = "INSUFFICIENT_FUNDS",
+  SERVICE_FAILURE = "SERVICE_FAILURE",
+}

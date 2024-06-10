@@ -2,6 +2,7 @@ import { FC } from "react";
 import { Routes, Route, useLocation } from "react-router-dom";
 import AdminLTE, { Navbar } from "adminlte-2-react";
 import { sidebar } from "./components";
+import { CustomNav, CustomNavItem } from "./Custom.style";
 import {
   Dashboard,
   HomePage,
@@ -14,7 +15,6 @@ import {
 } from "./pages";
 
 const baseURLs = ["/", "/login", "/signup"];
-const { Entry } = Navbar;
 
 const Layout: FC = () => {
   const location = useLocation();
@@ -31,7 +31,10 @@ const Layout: FC = () => {
         sidebar={sidebar}
       >
         <Navbar.Core>
-          <Entry labelValue={0}>Example</Entry>
+          <CustomNav>
+            <CustomNavItem>Example</CustomNavItem>
+            <CustomNavItem>Sample</CustomNavItem>
+          </CustomNav>
         </Navbar.Core>
         <Dashboard path="/dashboard" />
         <MerchantDetailPage path="/merchant/details" />

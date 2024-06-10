@@ -45,7 +45,9 @@ export function TransactionTable() {
               <td>{transaction.serviceCharge}</td>
               <td>{transaction.vat}</td>
               <td>{transaction.date}</td>
-              <td>{transaction.status}</td>
+              <td>
+                  {transaction.status}
+              </td>
               <td>{transaction.description}</td>
               <td>{transaction.remark}</td>
             </tr>
